@@ -1,0 +1,9 @@
+name: fruits-and-vegetables
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ./:/app

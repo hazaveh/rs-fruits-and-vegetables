@@ -30,7 +30,7 @@ it('converts kilos to grams', function () {
     expect($expectedItem->unit)->toEqual(WeightUnitEnum::GRAM)->and($expectedItem->quantity)->toEqual(11000);
 });
 
-it('does not convert gram values', function () {
+it('does not convert gram values', function() {
     $input = json_encode([
         ['id' => 1, 'name' => 'Banana', 'type' => 'fruit', 'quantity' => 11, 'unit' => 'g'],
     ]);
@@ -41,3 +41,5 @@ it('does not convert gram values', function () {
 
     expect($expectedItem->unit)->toEqual(WeightUnitEnum::GRAM)->and($expectedItem->quantity)->toEqual(11);
 });
+
+

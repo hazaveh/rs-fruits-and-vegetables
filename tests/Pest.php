@@ -10,9 +10,9 @@
 |
 */
 
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-pest()->extend(KernelTestCase::class)->in('Feature');
+pest()->extend(WebTestCase::class)->in('Feature');
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +35,19 @@ pest()->extend(KernelTestCase::class)->in('Feature');
 | global functions to help you to reduce the number of lines of code in your test files.
 |
 */
+
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
+use Symfony\Component\HttpKernel\KernelInterface;
+
+function bootKernel(): KernelInterface
+{
+    $kernel = new App\Kernel('test', true);
+    $kernel->boot();
+
+    return $kernel;
+}
+
+function createClient(KernelInterface $kernel): KernelBrowser
+{
+    return $kernel->getContainer()->get('test.client');
+}

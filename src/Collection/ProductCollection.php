@@ -8,7 +8,7 @@ use App\Model\Product;
 use App\Traits\Arrayable;
 use App\Traits\ConvertsWeightUnit;
 
-class ProductCollection implements \Countable, \ArrayAccess, ProductCollectionInterface
+class ProductCollection implements \Countable, \ArrayAccess, ProductCollectionInterface, \JsonSerializable
 {
     use Arrayable;
     use ConvertsWeightUnit;
@@ -47,5 +47,10 @@ class ProductCollection implements \Countable, \ArrayAccess, ProductCollectionIn
     public function list(WeightUnitEnum $weightUnitEnum = WeightUnitEnum::GRAM): array
     {
         return WeightUnitEnum::KILO_GRAM === $weightUnitEnum ? self::convertToKG($this->items) : $this->items;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return $this->items;
     }
 }

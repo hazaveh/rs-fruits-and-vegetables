@@ -32,4 +32,9 @@ trait Arrayable
     {
         unset($this->items[$offset]);
     }
+
+    public function toArray(): array
+    {
+        return $this->items;
+    }
 }

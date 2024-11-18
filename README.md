@@ -2,6 +2,7 @@
 
 ## Notes for the 🚙 🏄🏻 reviewer
 * The test suites should run all the functionality, you can run the `composer test` command to run the entire test suite as well as `phpstan`.
+* codestyles can be tested and fixed by `composer cs:check` & `composer cs:fix`
 * I have updated the minimum php dependency to 8.2 I wanted to make use of constructor property promotion
 * I have used `pest` testing framework for writing the tests. tests include functional and unit suites, they also cover database testing.
 
